@@ -1,0 +1,30 @@
+.connectBtn {
+
+    background-color: #ff9580;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+.FavoritesWrapperNotLogged {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+
+}
+
+.FavoritesNotLoggedT1 {
+    font-size: 28px;
+    padding: 20px;
+}
+
+.FavoritesNotLoggedT2 {
+    font-size: 16px;
+    padding: 20px;
+}
+
+.FavoritesNotLogged {
+    width: 80%;
+}

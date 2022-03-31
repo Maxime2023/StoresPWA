@@ -1,0 +1,11 @@
+.App {
+    text-align: center;
+}
+
+.navbar a {
+    color: beige !important;
+}
+.mainPageWrapperApp {
+    /* height: 100vh;
+    background-image: url("./images/backMainPage.png"); */
+}

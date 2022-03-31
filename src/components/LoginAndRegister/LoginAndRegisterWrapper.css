@@ -1,0 +1,50 @@
+@media screen and (max-width: 850px) {
+    .loginBtn {
+        width: 80%;
+        background-color: #ff9580;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    #basic_username {
+        width: 80%;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    #basic_password {
+        width: 80%;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    .inputLoginAndRegister {
+
+    }
+    .loginPage {
+        /* height: 100vh; */
+        /* max-height: 100vh;
+        min-height: 100vh; */
+        /* overflow: hidden; */
+        min-height: 100vh;
+       /* background-color: whitesmoke; */
+       display: flex;
+       width: 100%;
+       justify-content: center;
+       align-items: center;
+       align-content: center;
+       justify-items: center;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    .loginPage {
+        width: 40%;
+        margin-left: 30%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 20px;
+    }
+}
