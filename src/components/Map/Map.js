@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import React from 'react';
 import ReactMapGL from "react-map-gl";
-
+import './Map.css'
 
 const Map = () => {
   const [viewport, setViewport] = useState({
@@ -11,6 +11,11 @@ const Map = () => {
     height: "100vh",
     zoom: 11
   });
+
+  let coordinates = [
+    [1, 2],
+    [],
+  ]
 
 
   return (

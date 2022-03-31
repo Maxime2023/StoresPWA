@@ -41,7 +41,9 @@ const ProfilePro = () => {
     const [shopCategories, setShopCategories] = useState([]);
     const [shopProducts, setShopProducts] = useState([]);
     const [inputCategoryName, setInputCategoryName] = useState("");
+    const [inputProductName, setInputProductName] = useState("");
     const [menu, setMenu] = useState("Categories")
+    const [selectedCategory, setSelectedCategory] = useState("")
 
     useEffect(() => {
         console.log("https://f2zjurxgkg.execute-api.eu-central-1.amazonaws.com/Prod/users/" + localStorage.getItem("user_id") + "/shops")
@@ -82,6 +84,7 @@ const ProfilePro = () => {
     const clickToSelectShop = (shop) => {
         console.log("clickToSelectShop", shop)
         setSelectedShop(shop)
+        setMenu("Categories")
         axios.get("https://f2zjurxgkg.execute-api.eu-central-1.amazonaws.com/Prod/users/" + localStorage.getItem("user_id") +"/shops/" + shop.ID + "/categories")
         .then(res => {
             setShopCategories(res.data)
@@ -163,6 +166,11 @@ const ProfilePro = () => {
             setShopCategories(res.data)
         })
     }
+
+    const handleClickOnCategories = (category) => {
+        setMenu("Products");
+        setSelectedCategory(category)
+    }
     const mapCategories = () => {
         if (selectedShop === "") {
             return
@@ -171,7 +179,7 @@ const ProfilePro = () => {
             return
         } 
         return shopCategories.map(category => <div className='categoryWrapper'>
-            <div className='editCategoryName' onClick={() => setMenu("Products")}>
+            <div className='editCategoryName' onClick={() => handleClickOnCategories(category)}>
             {category.name}
             </div>
             <div className='editCategoryBtnDelete' onClick={() => deleteCategory(category)}>
@@ -181,17 +189,22 @@ const ProfilePro = () => {
     }
 
     const mapProducts = () => {
-        if (selectedShop === "") {
+        if (selectedShop === "" ) {
             return
         }
-        if (shopCategories.length === 0) {
-            return
-        } 
-        return shopCategories.map(category => <div className='categoryWrapper'>
-            <div className='editCategoryName' onClick={() => setMenu("Products")}>
-            {category.name}
+        let productsToShow = [];
+        for (let i = 0; i < selectedShop.products.length; i++) {
+            console.log(selectedShop.products[i].Category, selectedCategory.name)
+            if (selectedShop.products[i].Category === selectedCategory.name) {
+                productsToShow.push(selectedShop.products[i])
+            }
+        }
+        console.log('productsToShow', productsToShow)
+        return productsToShow.map(product => <div className='categoryWrapper'>
+            <div className='editCategoryName' onClick={() => setMenu("ProductInfos")}>
+            {product.Name}
             </div>
-            <div className='editCategoryBtnDelete' onClick={() => deleteCategory(category)}>
+            <div className='editCategoryBtnDelete' onClick={() => deleteCategory(product)}>
             <DeleteIcon/>
             </div>
         </div>)
@@ -214,6 +227,19 @@ const ProfilePro = () => {
         })
     }
 
+    const CreateNewProduct = () => {
+        let data = {
+            "Name": inputProductName,
+            "Ingredients": [],
+            "Price": "2.50",
+            "Labels": []
+        }
+        axios.post("https://f2zjurxgkg.execute-api.eu-central-1.amazonaws.com/Prod/users/" + localStorage.getItem("user_id") +"/shops/" + selectedShop.ID + "/products", data)
+        .then( res => {
+            console.log(res.data)
+        })
+    }
+
     const handleAllCategories = () => {
         if (menu === "Categories") {
             return (
@@ -227,14 +253,14 @@ const ProfilePro = () => {
             </div>
             )
         }
-        if (menu === "products") {
+        if (menu === "Products") {
             return (
                 <div className='dataWrapperAddShop'>
                 Mes produits : 
-                {mapCategories()}
+                {mapProducts()}
                 <div className='addCategoryInputBtnWrapper'>
-                    <Input className='addCategoryInput' placeholder='Ajouter une catégorie' onChange={(e) => setInputCategoryName(e.target.value)}/>
-                    <button className='addCategoryBtn' onClick={() => CreatenewCategoryforShop()}><AddCircleIcon/></button>
+                    <Input className='addCategoryInput' placeholder='Ajouter un produit' onChange={(e) => setInputProductName(e.target.value)}/>
+                    <button className='addCategoryBtn' onClick={() => CreateNewProduct()}><AddCircleIcon/></button>
                 </div>
             </div>
             )
