@@ -1,0 +1,196 @@
+@media only screen and (max-width: 750px) {
+    .AddStoreBtnProfile {
+        background-color: #D2F6FF;
+        padding: 10px;
+        border: none;
+        width: 90%;
+        border-radius: 10px;
+        color: black;
+        margin-top: 10px;
+    }
+    .dataWrapperAddShop {
+        padding: 20px;
+        padding-bottom: 100px;
+    }
+    .btnCreateStore {
+        width: 90%;
+        border: none;
+        margin-left: 5%;
+        border-radius: 10px;
+        padding: 10px;
+        background-color: #5ba9c3;
+        color: white;
+    }
+    .modalHeaderCreateShop {
+        background-color: #5ba9c3;
+        color: white;
+    }
+
+    .inputWrapper {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .inputSearchAddress {
+        width: 90%;
+    }
+
+    .suggestions {
+        z-index: 9;
+        position: absolute;
+        padding: 0;
+        list-style-type: none;
+        background: #fff;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        color: #a4a4a4;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+        padding: 5px;
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 10px;
+        margin-top: 250px;
+    }
+    .suggestions > div {
+        padding: 10px;
+    }
+    .categoryWrapper {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        padding: 10px;
+        margin: 10px;
+        display: flex;
+    }
+
+    .editCategoryName {
+        width: 90%;
+        text-align: center;
+    }
+
+    .editCategoryBtnDelete {
+        width: 10%;
+    }
+    .addCategoryInputBtnWrapper {
+        display: flex;
+        padding: 10px;
+
+    }
+    .addCategoryInput {
+        width: 70%;
+
+    }
+
+    .addCategoryBtn {
+        width: 30%;
+        border: none;
+        
+    }
+}
+
+@media only screen and (min-width: 750px) {
+   .ProfileProWrapper {
+       padding-top: 60px;
+
+   }
+   .AddStoreBtnProfile {
+       border: none;
+       cursor: pointer;
+       padding: 10px;
+       border-radius: 5px;
+       background-color: #ff9580;
+       color: white;
+       display: flex;
+       flex-direction: row;
+       justify-content: center;
+       align-items: center;
+       width: 40%;
+       margin-left: 30%;
+   }
+   .modal-content {
+    padding-top: 60px !important;
+   
+    }
+    .dataWrapperAddShop {
+        padding: 20px;
+    }
+    .inputWrapper {
+        padding: 5px;
+    }
+    .btnCreateStore {
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #ff9580;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+    }
+    .suggestions {
+        z-index: 9;
+        position: absolute;
+        padding: 0;
+        list-style-type: none;
+        background: #fff;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        color: #a4a4a4;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+        padding: 5px;
+        width: 90%;
+        margin-left: 5%;
+        border-radius: 10px;
+        margin-top: 250px;
+    }
+    .mapStoresWrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+        padding: 20px;
+    }
+    .categoryWrapper {
+        display: flex;
+        background-color: whitesmoke;
+        padding: 10px;
+        border-radius: 10px;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        .editCategoryName {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+        }
+        .editCategoryBtnDelete {
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        .editCategoryBtnDelete :hover {
+            color: #ff9580;
+        }
+    }
+    .addCategoryInputBtnWrapper {
+        display: flex;
+        padding: 10px;
+        margin: 10px;
+    }
+    .addCategoryBtn {
+        border: none;
+        background-color: #ff9580;
+        color: white;
+    }
+}

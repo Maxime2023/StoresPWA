@@ -1,5 +1,5 @@
 import React from 'react'
-import './TabBar.css'
+import './TabBar.scss'
 import { useDispatch } from 'react-redux';
 import { storeSelectedMenu, changeSelectedMenu} from '../Redux/Store';
 import { useSelector } from 'react-redux';

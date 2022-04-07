@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react'
 import axios from 'axios'
 import {Input} from "antd"
-import './ProfilePro.css'
+import './ProfilePro.scss'
 import Modal from "react-bootstrap/Modal";
 import { Select, notification } from 'antd';
 import Store from '../../Stores/Store'
 import 'antd/dist/antd.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { LoadingOutlined,} from '@ant-design/icons';
 const { Option } = Select;
 
 
@@ -36,7 +37,7 @@ const ProfilePro = () => {
     const [city, setCity] = useState([]);
     const [type, setType] = useState("Boulangerie");
     const [userShops, setUserShops] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [selectedShop, setSelectedShop] = useState("");
     const [shopCategories, setShopCategories] = useState([]);
     const [shopProducts, setShopProducts] = useState([]);
@@ -72,13 +73,14 @@ const ProfilePro = () => {
     const searchAddressGouv = (value) => {
         setAreSuggestionsOpen(true)
         setInputAddress(value)
+        axios.get("https://api-adresse.data.gouv.fr/search/?q="+ value)
+        .then(res => {
+            console.log(res.data)
+            setResultsAdress(res.data)
+        })
         if (value[value.length - 1] === " ") {
             console.log("sdfdsf")
-            axios.get("https://api-adresse.data.gouv.fr/search/?q="+ value)
-            .then(res => {
-                console.log(res.data)
-                setResultsAdress(res.data)
-            })
+
         }
     }
     const clickToSelectShop = (shop) => {
@@ -106,6 +108,7 @@ const ProfilePro = () => {
     }
 
     const createNewShop = () => {
+        setIsLoading(true)
         let body = {
             "name": inputName,
             "store": type,
@@ -119,13 +122,14 @@ const ProfilePro = () => {
             .then(res => {
                 console.log(res.data)
                 setUserShops(res.data)
+                setIsLoading(false)
             })
         })
     }
 
     const addShopModal = () => {
         return (
-            <Modal show={showAddShopModal} onHide={() => setShowAdddShopModal(false)} style={{width: "100%", minHeight: "100vh" }}>
+            <Modal show={showAddShopModal} onHide={() => setShowAdddShopModal(false)} className='addShopModal'>
                 <Modal.Header className='modalHeaderCreateShop'>
                     Créer une boutique
                     <button type="button" style={{color: "white"}} class="close" data-dismiss="modal" aria-label="Close" onClick={() => setShowAdddShopModal(false)}>
@@ -147,13 +151,13 @@ const ProfilePro = () => {
                 {mapAddresses()}
                 <div className='dataWrapperAddShop'>
                     Selectionnez le type de votre boutique:
-                <Select defaultValue="Boulangerie" style={{ width: "90%", marginTop: "10px", marginLeft: "5%" }} onChange={handleChange}>
+                <Select defaultValue="Boulangerie" style={{ width: "100%", marginTop: "10px", }} onChange={handleChange}>
                     {mapSelect()}
                 </Select>
                 </div>
                 <div className='dataWrapperAddShop'>
                 <button className='btnCreateStore' onClick={() => createNewShop()}>
-                    Créer la boutique
+                    {isLoading ? <LoadingOutlined style={{fontSize: "22px"}}/> : "Créer la boutique"}
                 </button>
                 </div>
             </Modal>
@@ -211,6 +215,7 @@ const ProfilePro = () => {
     }
 
     const CreatenewCategoryforShop = () => {
+        setIsLoading(true)
         console.log(selectedShop.ID)
         console.log(localStorage.getItem("user_id"))
         console.log("inputCategoryName" ,inputCategoryName)
@@ -224,6 +229,7 @@ const ProfilePro = () => {
             setShopCategories(res.data)
             console.log(res.data)
             let tmp = selectedShop
+            setIsLoading(false)
         })
     }
 
@@ -248,7 +254,7 @@ const ProfilePro = () => {
                 {mapCategories()}
                 <div className='addCategoryInputBtnWrapper'>
                     <Input className='addCategoryInput' placeholder='Ajouter une catégorie' onChange={(e) => setInputCategoryName(e.target.value)}/>
-                    <button className='addCategoryBtn' onClick={() => CreatenewCategoryforShop()}><AddCircleIcon/></button>
+                    <button className='addCategoryBtn' onClick={() => CreatenewCategoryforShop()}>{ isLoading ? <LoadingOutlined/> :  <AddCircleIcon/>}</button>
                 </div>
             </div>
             )
@@ -301,16 +307,16 @@ const ProfilePro = () => {
     }
 
     return (
-        <div>
+        <div className='ProfileProWrapper'>
             {addShopModal()}
             {modifyStoreCategory()}
             <button className='AddStoreBtnProfile' onClick={() => setShowAdddShopModal(true)}>
-                Ajouter une boutique
+                Ajouter une boutique&nbsp;&nbsp;<AddCircleIcon/>
             </button>
-            <div>
-                Mes boutiques
-            </div>
+            <div className='mapStoresWrapper'>
             {mapStore()}
+            </div>
+    
         </div>
     )
 }

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, notification, Radio } from 'antd';
-import './LoginAndRegisterWrapper.css'
+import './LoginAndRegisterWrapper.scss'
 import axios from 'axios';
 import Profile from '../Profile/Profile';
+import { LoadingOutlined } from '@ant-design/icons';
 export function LoginAndregisterWrapper() {
   const [statusPage, setStatusPage] = useState("Login");
   const [value, setValue] = React.useState(1);
+  const [isLoading, setIsloading] = useState(false)
 
   const openNotification = (type) => {
     notification.open({
@@ -19,6 +21,7 @@ export function LoginAndregisterWrapper() {
   };
 
   const onFinish = (values, type) => {
+    setIsloading(true)
     let body = {"username": values.username, "password": values.password,};
     let userType = "pro";
     if (value === 1) {
@@ -33,7 +36,7 @@ export function LoginAndregisterWrapper() {
         localStorage.setItem("token", res.data.data.id_token)
         localStorage.setItem("user_id", res.data.data.user_infos.find(x => x.Name === "sub").Value)
       }
-     
+      setIsloading(false)
       openNotification(type)
     })
     .catch(function (error) {
@@ -53,6 +56,7 @@ export function LoginAndregisterWrapper() {
 
   if (statusPage === "Register" ) {
     return (
+      <div className='loginPageWrapper'>
       <div className="loginPage">
         <Form style={{width: "100%"}} name="basic" onFinish={(e) => onFinish(e, "register")} onFinishFailed={(e) => onFinishFailed(e, "register")}autoComplete="off">
           <div style={{fontSize: "28px", color: "#2a3345", padding: "20px"}}>
@@ -82,17 +86,19 @@ export function LoginAndregisterWrapper() {
           </Form.Item>
           <Form.Item>
             <button className='loginBtn' htmlType="submit">
-              S'inscrire
+            {isLoading ? <LoadingOutlined style={{fontSize: "22px"}}/> : "S'inscrire"}
             </button>
           </Form.Item>
           <div style={{cursor: "pointer", display: "flex", justifyContent: "center" }} onClick={() => setStatusPage("Login")}>Déja un compte ?&#160;<p style={{color: "#0593fc"}}> Se connecter</p> </div>
           </div>
         </Form>
       </div>
+      </div>
     )
   }
   if (statusPage === "Login" ) {
     return (
+      <div className='loginPageWrapper'>
       <div className="loginPage">
         <Form style={{width: "100%"}} name="basic" onFinish={(e) => onFinish(e, "login")} onFinishFailed={(e) => onFinishFailed(e, "login")}autoComplete="off">
           <div style={{fontSize: "28px", color: "#2a3345", padding: "20px"}}>
@@ -110,7 +116,7 @@ export function LoginAndregisterWrapper() {
           </Form.Item>
           <Form.Item>
             <button className='loginBtn' htmlType="submit">
-              Se connecter
+              {isLoading ? <LoadingOutlined style={{fontSize: "22px"}}/> : "Se connecter"}
             </button>
           </Form.Item>
           <div style={{cursor: "pointer", display: "flex", justifyContent: "center" }} onClick={() => setStatusPage("Register")}>Pas encore de compte ?&#160;<p style={{color: "#0593fc"}}> S'inscrire</p> </div>
@@ -118,6 +124,7 @@ export function LoginAndregisterWrapper() {
         </Form>
     
         
+      </div>
       </div>
     )
   }

@@ -1,0 +1,153 @@
+@media only screen and (min-width: 750px) {
+  .storeInput{
+    width:70%;
+  }
+
+  .storeButtonSearch{
+    width:30%;
+  }
+  .storeButtonSearchWrapper {
+    width: 50%;
+    margin-left: 25%;
+    padding: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    
+  }
+  .storesSelector {
+    padding: 10px;
+  }
+  .storeSearch{
+    display:flex;
+    padding: 10px;
+  }
+
+  .allStores{
+    padding-top: 140px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+  .StoreWrapperHeaderFixer {
+
+  }
+  .StoreWrapperHeader {
+    position: absolute;
+    /* width: 100%; */
+    background-color: white;
+    padding-top: 30px;
+  }
+
+  .storeResults{
+    /* padding-top: 70px; */
+  }
+  .inputStoreWrapper {
+    /* padding: 10px; */
+    width: 100%;
+    padding: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: none;
+    border-radius: 10px;
+    color: #2a3345
+  }
+
+  .modal-dialog {
+    margin: 0 !important;
+  }
+
+  .modal-content {
+    border-radius: 0 !important;
+    border: none !important;
+    min-height: 100vh;
+  }
+
+  .headerModal {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .headerModalBtnClose {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    width: 40px;
+    text-align: center;
+    height: 40px;
+    /* height: 30px;
+    width: 30px; */
+    /* padding: 5px; */
+  }
+
+  .categoriesMenuModal {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .categoriesModal {
+    flex-direction: row;
+    text-align: center;
+  }
+
+  .categoriesModalSelected {
+    flex-direction: row;
+    text-align: center;
+    color: red;
+    border-bottom: 2px solid red;
+  }
+
+  .productModalWrapper {
+    width: 80%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-left: 10%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    height: 80px;
+    line-height: 80px;
+  }
+
+  .modalUpperWrapper {
+    background-color: whitesmoke;
+    color: #3c435b;
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  .modalUpperWrapperHeader {
+    display: flex;
+    text-align: center;
+    width: 100%;
+    padding: 40px;
+  }
+  .modalUpperWrapperHeader > div {
+    width: 50%;
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  .ingredientsUpperWrapperHeader {
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    border: 1px solid;
+    border-radius: 20px;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .StoreWrappergeneral {
+    padding-top: 60px;
+  }
+  .modal-content {
+    width: 100%;
+  }
+}

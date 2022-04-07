@@ -1,7 +1,7 @@
 import { ForkLeft } from "@mui/icons-material";
 import { useEffect, useRef, useState } from "react";
 import {notifications} from "../Stores/Data";
-import './News.css'
+import './News.scss'
 
 const News = () => {
   const mapNews = () => {

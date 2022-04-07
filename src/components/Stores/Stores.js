@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Store from "./Store";
-import './Stores.css';
+import './Stores.scss';
 import axios from "axios";
 import { useDispatch } from 'react-redux';
 import {data} from "./Data.js"
@@ -260,7 +260,7 @@ const Stores = () => {
     }
 
     return (
-        <div>
+        <div className='StoreWrappergeneral'>
             <div>
             {productPage()}
             <Modal show={show} onHide={handleClose} style={{width: "100%", minHeight: "100vh"}}>

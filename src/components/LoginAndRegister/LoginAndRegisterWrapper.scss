@@ -39,12 +39,39 @@
 }
 
 @media screen and (min-width: 850px) {
+    .loginBtn {
+        width: 80%;
+        background-color: #ff9580;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    #basic_password {
+        width: 80%;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ff9580;
+    }
+    .inputLoginAndRegister {
+        width: 80%;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ff9580;
+    }
     .loginPage {
         width: 40%;
-        margin-left: 30%;
+        // margin-left: 30%;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         background-color: white;
         padding: 20px;
         border-radius: 20px;
+    }
+    .loginPageWrapper {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
     }
 }
